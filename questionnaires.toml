@@ -1,0 +1,130 @@
+[[questionnaire]]
+	title="Ad"
+	closing="Great! I'm so excited to build this with you. You should recieve an email bill and project timeline shortly. Let me know if you need anything else! I'm always here to help :)"
+	[[questionnaire.question]]
+		text="Neat! We're building an Ad. Could you tell me what the purpose of the ad is?"
+		choices = [
+			"Awareness. (I want as many new people to know about us as possible.)",
+			"Direct Action. (I want to drive traffic to a specific product or to download my mobile app.)",
+			"Lead Generation (I want to drive user or email signups)",
+			"Customer Retention (I want to build loyalty among my current customers).",
+		]
+	[[questionnaire.question]]
+		text="Where do we want this ad to run? You can choose as many as you want, but please seperate your answers with commas."
+		choices = [
+			"Facebook",
+			"Twitter",
+			"Instagram",
+			"Pinterest",
+			"Reddit",
+			"Google Adwords (Search)",
+			"Bing Search",
+			"Yahoo/Duck Duck Go Search",
+			"Display Ads",
+		]
+	[[questionnaire.question]]
+		text="Great! What kind of budget are we working with today?"
+	[[questionnaire.question]]
+		text="How long do we want these ads to run for? If you could, please give me a number in days."
+	[[questionnaire.question]]
+		text="What kind of audience are we targeting? If you could, please include a brief description as well as some interests and what you percieve their lifestyle to be like. The more information the better!"
+	[[questionnaire.question]]
+		text="Do you have any specific deadline?"
+	[[questionnaire.question]]
+		text="Any additional information we should know?"
+
+[[questionnaire]]
+	title="Content"
+	closing="Great! I'm so excited to build this with you. You should recieve an email bill and project timeline shortly. Let me know if you need anything else! I'm always here to help :)"
+	[[questionnaire.question]]
+		text="Cool. We're creating some content. What's the purpose of this piece of content?"
+		choices = [
+			"Thought leadership. (I want people to know I'm the best in my field.)",
+			"Awareness (I want as many new people to know about us as possible.)",
+			"Loyalty (I want to engage with my current audience.)",
+			"Education (I want to teach my audience something.)",
+			"Engagement (I want to start a conversation.)",
+		]
+	[[questionnaire.question]]
+		text="Where is this piece of content going to live? You can choose as many as you want, but please seperate your answers with commas."
+		choices = [
+			"Facebook",
+			"Twitter",
+			"Instagram",
+			"Pinterest",
+			"Reddit",
+			"My blog",
+			"Someone else's website/blog",
+			"A landing page",
+			"Email",
+			"A mobile app",
+		]
+	[[questionnaire.question]]
+		text="What kind of content are we making specifically?"
+		choices =[
+			"White paper",
+			"Long Blog post (Over 500 words.)",
+			"Organic Social Media Post",
+			"Email Newsletter",
+			"Email Drip Course",
+			"Landing Page Copy",
+			"Web page copy",
+			"Short Blog post (Under 500 words.)",
+		]
+	[[questionnaire.question]]
+		text="What's the budget for making this piece of content?"
+	[[questionnaire.question]]
+		text="What kind of audience are we targeting? If you could, please include a brief description as well as some interests and what you percieve their lifestyle to be like. The more information the better!"
+	[[questionnaire.question]]
+		text="Do you have any specific deadline?"
+	[[questionnaire.question]]
+		text="Any additional information we should know?"
+[[questionnaire]]
+	title="Graphics"
+	closing="Great! I'm so excited to build this with you. You should recieve an email bill and project timeline shortly. Let me know if you need anything else! I'm always here to help :)"
+	[[questionnaire.question]]
+		text="Fantastic. We're making a graphic. What's the goal we're going to accomplish?"
+		choices = [
+			"Branding (I need to improve our companies image.)",
+			"Awareness (I want as many new people to know about us as possible.)",
+			"Thought Leadership (I want people to know I'm the best in my field.)",
+			"Loyalty (I want to engage with my current audience.)",
+			"Education (I want to teach my audience something.)",
+			"Engagement (I want to start a conversation.)",
+		]
+	[[questionnaire.question]]
+		text="Where is this graphic going to be posted? You can choose as many as you want, but please seperate your answers with commas."
+		choices = [
+			"Facebook",
+			"Twitter",
+			"Instagram",
+			"Pinterest",
+			"Reddit",
+			"My blog",
+			"Someone else's website/blog",
+			"Email",
+			"The physical world",
+			"A mobile app",
+		]
+	[[questionnaire.question]]
+		text = "What kind of graphic are we specifically making?"
+		choices = [
+			"Logo",
+			"infographic",
+			"Business card",
+			"Letterhead",
+			"A one page handout or brochure",
+			"Social media post",
+			"A graphic for a section of my website (Not my blog)",
+			"For a blog post or other piece of content.",
+		]
+	[[questionnaire.question]]
+		text = "If this is for either a piece of content or a portion of your website, could you please include a link?"
+	[[questionnaire.question]]
+		text = "What kind of audience are we targeting? If you could, please include a brief description as well as some interests and what you percieve their lifestyle to be like. The more information the better!"
+	[[questionnaire.question]]
+		text = "What's the budget for making this graphic?"
+	[[questionnaire.question]]
+		text = "Do you have any specific deadline?"
+	[[questionnaire.question]]
+		text = "Any additional information we should know?"

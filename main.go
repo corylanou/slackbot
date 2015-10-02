@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"strings"
 
-	"github.com/davecgh/go-spew/spew"
+	"github.com/corylanou/questionbot"
 	"github.com/nlopes/slack"
 )
 
 const tokenKey = "SLACKBOT_TOKEN"
+
+var qbot *questionBot.Service
 
 func main() {
 	token := os.Getenv(tokenKey)
@@ -18,24 +22,35 @@ func main() {
 	rtm := api.NewRTM()
 	go rtm.ManageConnection()
 
+	// Load the questionBot service
+	q, e := questionBot.NewService(questionBot.Config{DataPath: "./questionnaires.toml"})
+	if e != nil {
+		log.Fatal(e)
+	}
+	qbot = q
+
 Loop:
 	for {
 		select {
 		case msg := <-rtm.IncomingEvents:
-			spew.Dump(msg)
 			fmt.Print("Event Received: ")
 			switch ev := msg.Data.(type) {
 			case *slack.HelloEvent:
 				// Ignore hello
 
 			case *slack.ConnectedEvent:
-				spew.Dump(ev.Info)
+				info := rtm.GetInfo()
 				fmt.Println("Connection counter:", ev.ConnectionCount)
-				rtm.SendMessage(rtm.NewOutgoingMessage("Slackbot reporting for duty!", ev.Info.Channels[0].ID))
+				rtm.SendMessage(rtm.NewOutgoingMessage(info.User.Name+" reporting for duty!", ev.Info.Channels[0].ID))
 
 			case *slack.MessageEvent:
-				respond(rtm, ev)
-				fmt.Printf("Message: %v\n", ev)
+				info := rtm.GetInfo()
+				prefix := fmt.Sprintf("<@%s>: ", info.User.ID)
+				log.Println("prefix: ", prefix, " msg: ", ev.Text)
+				if ev.User != info.User.ID && strings.HasPrefix(ev.Text, prefix) {
+					respond(rtm, ev, prefix)
+					fmt.Printf("Message: %v\n", ev)
+				}
 
 			case *slack.PresenceChangeEvent:
 				fmt.Printf("Presence Change: %v\n", ev)
@@ -59,8 +74,21 @@ Loop:
 	}
 }
 
-func respond(rtm *slack.RTM, msg *slack.MessageEvent) {
-	omsg := rtm.NewOutgoingMessage("what?  stop bothering me!", msg.Channel)
+func respond(rtm *slack.RTM, msg *slack.MessageEvent, prefix string) {
+	var response string
+	text := msg.Text
+	text = strings.TrimPrefix(text, prefix)
+	text = strings.TrimSpace(text)
+	text = strings.ToLower(text)
+	switch text {
+	case "help":
+		response = fmt.Sprintf("Available questionnaires: \n\n%s", qbot.Questionnaires.AvailableQuestionnaires())
+	case "status":
+		response = "status is.. YOU ARE AWESOME!"
+	case "":
+	default:
+		response = fmt.Sprintf("I didn't understand your request. Available questionnaires: \n\n%s", qbot.Questionnaires.AvailableQuestionnaires())
+	}
+	omsg := rtm.NewOutgoingMessage(response, msg.Channel)
 	rtm.SendMessage(omsg)
-
 }
